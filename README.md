@@ -2,7 +2,7 @@
 
 This project is a web application for Shamir Secret Sharing, allowing users to securely split a secret into multiple parts and distribute them among trusted individuals.
 
-![Shamir Secret Online](../public//images/img.png)
+![Shamir Secret Online](./public//images/img.png)
 
 ## Features
 
