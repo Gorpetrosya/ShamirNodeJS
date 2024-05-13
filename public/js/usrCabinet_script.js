@@ -119,7 +119,10 @@ $.ajax({
             secretKey.innerHTML = allSecretKeys;
             firstName.innerHTML = response.firstName;
             lastName.innerHTML = response.lastName;
-            level.innerHTML = response.level.charAt(0).toUpperCase() + response.level.slice(1);
+            if (response.level == "user")
+                level.innerHTML = response.level.charAt(0).toUpperCase() + response.level.slice(1);
+            else
+                level.innerHTML = response.level.charAt(0).toUpperCase() + response.level.slice(1) + " User";
         }
         // Handle successful sign-in (e.g., redirect to dashboard)
     }
