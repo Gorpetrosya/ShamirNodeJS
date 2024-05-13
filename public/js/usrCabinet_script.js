@@ -12,7 +12,7 @@ function copySecretKey() {
     var secretKeyText = document.getElementById('secretKey');
     var tempInput = document.createElement('input');
     document.body.appendChild(tempInput);
-    
+
     // let originalString = secretKeyText.innerText;
     // console.log(originalString.length);
     // let spaceToAdd = "\n";
@@ -97,10 +97,11 @@ $.ajax({
     url: url,
     type: 'POST',
     data: userInfo,
-    success: function(response) {
+    success: function (response) {
         var secretKey = document.getElementById('secretKey');
         var firstName = document.getElementById('firstName');
         var lastName = document.getElementById('lastName');
+        var level = document.getElementById('level');
 
         // console.log(response);
         if (response.successful === true) {
@@ -118,16 +119,17 @@ $.ajax({
             secretKey.innerHTML = allSecretKeys;
             firstName.innerHTML = response.firstName;
             lastName.innerHTML = response.lastName;
+            level.innerHTML = response.level.charAt(0).toUpperCase() + response.level.slice(1);
         }
-      // Handle successful sign-in (e.g., redirect to dashboard)
+        // Handle successful sign-in (e.g., redirect to dashboard)
     }
-  });
+});
 
 
 function acceptKey() {
     var sKeyText = document.getElementById('secretKey');
     console.log(sKeyText.innerText);
-    if(sKeyText.innerText.length < 100){
+    if (sKeyText.innerText.length < 100) {
         alert("You don't have SECRETKEY!!!");
     } else {
         let url = "/acceptList"
@@ -135,7 +137,7 @@ function acceptKey() {
             url: url,
             type: 'POST',
             data: userInfo,
-            success: function(response) {
+            success: function (response) {
                 if (response.successful == true) {
                     alert("You have confirmed!!!");
                 }
@@ -151,10 +153,10 @@ function cancelKey() {
         url: url,
         type: 'POST',
         data: userInfo,
-        success: function(response) {
+        success: function (response) {
             if (response.successful == true) {
                 alert("You have canceled!!!");
             }
         }
-      });
+    });
 }

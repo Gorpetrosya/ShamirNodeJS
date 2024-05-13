@@ -121,14 +121,14 @@ app.post('/userinfo', urlencodedParser, function (req, res) {
         };
         //   console.log(data.login);
         let userFound = await collection.findOne({ userName: req.body.userName }, options);
-        // console.log(userFound);
+        console.log(userFound);
         if (userFound == null) {
             res.json({ successful: true });
         } else {
             if (userFound.level == "user") {
                 res.json({ firstName: userFound.firstName, lastName: userFound.lastName, secretKey: [userFound.secretKey.one] });
             } else {
-                res.json({ firstName: userFound.firstName, lastName: userFound.lastName, secretKey: [userFound.secretKey.one, userFound.secretKey.two] });
+                res.json({ firstName: userFound.firstName, lastName: userFound.lastName, level: userFound.level, secretKey: [userFound.secretKey.one, userFound.secretKey.two] });
             }
         }
     }
